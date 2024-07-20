@@ -1,37 +1,79 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Node modules
 /node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
-.env*
+# Dependency directories
+jspm_packages/
 
-# vercel
+# Next.js build output
+.next/
+out/
+
+# Production
+build/
+
+# dotenv environment variables file
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Next.js static files
+/public/static
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Vercel deployment
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Local env files
+local.env
+
+# Debug files
+.vscode/
+
+# IDE files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional Jest cache
+/jest
+
+# Next.js Cache
+.next/cache
+
+# Next.js typegen output
+.next/types
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Compiled binary addons
+*.node
+
+# TypeScript build cache
+.tsbuildinfo
