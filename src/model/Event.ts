@@ -3,7 +3,8 @@ import mongoose, {Schema , Document} from "mongoose";
 export interface Event extends Document {
     banner: string,
     description: string,
-    date: Date
+    date: Date,
+    heading: string
 }
 
 const EventsSchema : Schema<Event> = new mongoose.Schema({
@@ -16,8 +17,11 @@ const EventsSchema : Schema<Event> = new mongoose.Schema({
     },
     date:{
         type: Date
+    },
+    heading: {
+        type: String
     }
-})
+},{timestamps: true});
 
 const EventModel = (mongoose.models.Event as mongoose.Model<Event>) || (mongoose.model<Event>("Event", EventsSchema));
 

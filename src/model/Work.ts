@@ -21,7 +21,7 @@ const WorkSchema: Schema<Work> = new mongoose.Schema({
   heading: {
     type: String
   },
-});
+},{timestamps: true});
 
 const WorkModel = (mongoose.models.Work as mongoose.Model<Work>) ||  mongoose.model<Work>('Work', WorkSchema);
 
