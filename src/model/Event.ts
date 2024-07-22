@@ -1,16 +1,35 @@
 import mongoose, {Schema , Document} from "mongoose";
 
+
+interface Banner {
+    url: string;
+    public_id: string;
+}
+
+
 export interface Event extends Document {
-    banner: string,
+    banner: Banner[],
     description: string,
     date: Date,
     heading: string
 }
 
-const EventsSchema : Schema<Event> = new mongoose.Schema({
-    banner:{
+
+
+const BannerSchema: Schema<Banner> = new Schema({
+    url: {
         type: String,
+        required: true
     },
+    public_id: {
+        type: String,
+        required: true
+    }
+});
+
+
+const EventsSchema : Schema<Event> = new mongoose.Schema({
+    banner:[BannerSchema],
     description:{
         type: String,
         required: [true, "description is required"]

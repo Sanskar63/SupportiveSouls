@@ -22,7 +22,7 @@ export async function POST(request: Request) {
             return new Response("No images provided", { status: 400 });
         }
 
-        const imageUrls: string[] = [];
+        const imageUrls = [];
         for (const file of files) {
             const byteData = await (file as File).arrayBuffer();
             const buffer = Buffer.from(byteData);
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
             const response = await uploadOnCloudinary(path);
             if (response) {
                 // console.log(response, "----------------------------------");
-                imageUrls.push(response.secure_url);
+                imageUrls.push({url:response.secure_url, public_id: response.public_id});
             }
         }
 

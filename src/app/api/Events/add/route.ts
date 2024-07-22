@@ -31,7 +31,12 @@ export async function POST(request: Request) {
       return new Response("Failed to upload image", { status: 500 });
     }
 
-    const imageUrl = uploadResponse.secure_url;
+    const imageUrl = [];
+    if (uploadResponse) {
+      imageUrl.push({ url: uploadResponse.secure_url, public_id: uploadResponse.public_id });
+  }
+  console.log(imageUrl);
+  // return new Response("hello");
     // console.log(description, heading, imageUrl, date);
     
     const content = {

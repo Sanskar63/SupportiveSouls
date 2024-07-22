@@ -1,11 +1,28 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+interface Banner {
+  url: string;
+  public_id: string;
+}
+
 export interface Work extends Document {
   description: string;
-  images: [string];
+  images: Banner[];
   heading: string
 }
 //interface is part of typescript but document is part of mongoose. Here we made typesafety for Work custom data type.
+
+
+const BannerSchema: Schema<Banner> = new Schema({
+  url: {
+      type: String,
+      required: true
+  },
+  public_id: {
+      type: String,
+      required: true
+  }
+});
 
 // Updated User schema
 const WorkSchema: Schema<Work> = new mongoose.Schema({
@@ -15,7 +32,7 @@ const WorkSchema: Schema<Work> = new mongoose.Schema({
   },
 
   images: [
-    {type: String,}
+    BannerSchema
   ],
 
   heading: {
