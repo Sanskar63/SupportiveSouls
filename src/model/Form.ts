@@ -9,7 +9,7 @@ export interface Form extends Document {
     hours: number;
     aadhar: number;
     about: string;
-    image: string;
+    // image: string;
 }
 //interface is part of typescript but document is part of mongoose. Here we made typesafety for Work custom data type.
 
@@ -43,9 +43,9 @@ const FormSchema: Schema<Form> = new mongoose.Schema({ //here this is schema of 
     about: {
         type: String,
     },
-    image: {
-        type: String
-    }
+    // image: {
+    //     type: String
+    // }
 });
 
 const FormModel = (mongoose.models.Form as mongoose.Model<Form>) || mongoose.model<Form>('Form', FormSchema);

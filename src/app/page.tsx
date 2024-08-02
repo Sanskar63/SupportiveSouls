@@ -5,6 +5,7 @@ import { LayoutGrid } from "@/components/ui/layout-grid";
 import Hero from "@/components/ui/hero-section";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import Footer from "@/components/ui/footer";
+import Link from "next/link";
 
 export default function NavbarDemo() {
   return (
@@ -38,12 +39,12 @@ export default function NavbarDemo() {
         </span>
 
         <div className="w-[100%] flex items-center justify-center mt-[2vh]">
-          <button className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl">
+          <Link href={"/donate"} className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Donate
-          </button>
-          <button className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl">
+          </Link>
+          <Link href={"/form"} className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Join Us
-          </button>
+          </Link>
         </div>
 
       </div>

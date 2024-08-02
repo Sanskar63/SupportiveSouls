@@ -7,6 +7,6 @@ export const FormSchema = z.object({
     role: z.string(),
     hours: z.number(),
     about: z.string(),
-    image: z.string(),
+    // image: z.string(),
     aadhar: z.number(),
 })

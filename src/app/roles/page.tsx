@@ -4,6 +4,7 @@ import { BackgroundBeams } from "@/components/ui/background-beams";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import RolesReader from "@/components/ui/role-reader";
 import Footer from "@/components/ui/footer";
+import Link from "next/link";
 
 const BackgroundBeamsDemo: React.FC = () => {
   return (
@@ -24,9 +25,11 @@ const BackgroundBeamsDemo: React.FC = () => {
 
       <div className="h-[5vh]"></div>
 
-      <button className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] rounded-full text-xl md:text-2xl font-bold">
+      <Link href={"/form"}
+      className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] flex items-center justify-center rounded-full text-xl md:text-2xl font-bold"
+      >
         Join Us
-      </button>
+      </Link>
 
       <div className="h-[10vh]"></div>
 

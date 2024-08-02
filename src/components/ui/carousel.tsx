@@ -2,12 +2,18 @@
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
+
+interface ImageItem {
+  url: string;
+  alt?: string; // Optional alt text for the image
+}
+
 interface Items {
     _id: string;
     description: string;
-    images: string[];
+    images: ImageItem[];
     heading: string;
-    __v: number;
+    __v?: number;
 }
 
 interface ContentReaderProps {
@@ -31,7 +37,7 @@ const Carousel: React.FC<ContentReaderProps> = ({ data }) => {
       {data.images.map((item, idx) => {
         return (
           <img
-            src={item}
+            src={item.url}
             // alt={item.alt}
             key={idx}
             className={`${slide === idx ? 'block' : 'hidden'} rounded-lg shadow-md w-full h-full`}

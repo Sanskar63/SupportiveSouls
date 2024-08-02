@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     const data = await request.formData();
     const name = data.get('name')?.toString();
     const email = data.get('email')?.toString();
-    const file = data.get('image') as File;
+    // const file = data.get('image') as File;
     const contact = data.get('contact');
     const role = data.get('role')?.toString();
     const hours = data.get('hours');
@@ -25,21 +25,22 @@ export async function POST(request: Request) {
     // console.log(data)
     // return new Response(data);
     
-    if (!file || !name || !email || !contact || !role || !hours || !about || !aadhar) {
+    if (!name || !email || !contact || !role || !hours || !about || !aadhar) {
+      console.log("----------All data needed-------------")
       return new Response("All feilds are required", { status: 400 });
     }
     
-    const byteData = await file.arrayBuffer();
-    const buffer = Buffer.from(byteData);
-    const localPath = `./public/${file.name}`;
-    await writeFile(localPath, buffer);
+    // const byteData = await file.arrayBuffer();
+    // const buffer = Buffer.from(byteData);
+    // const localPath = `./public/${file.name}`;
+    // await writeFile(localPath, buffer);
     
-    const uploadResponse = await uploadOnCloudinary(localPath);
-    if (!uploadResponse) {
-      return new Response("Failed to upload image", { status: 500 });
-    }
+    // const uploadResponse = await uploadOnCloudinary(localPath);
+    // if (!uploadResponse) {
+    //   return new Response("Failed to upload image", { status: 500 });
+    // }
 
-    const imageUrl = uploadResponse.secure_url;
+    // const imageUrl = uploadResponse.secure_url;
     
     const content = {
       name,
@@ -48,7 +49,7 @@ export async function POST(request: Request) {
       role,
       hours:hoursNum,
       about,
-      image: imageUrl,
+      // image: imageUrl,
       aadhar:aadharNum
     };
 
