@@ -1,12 +1,35 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import RolesReader from "@/components/ui/role-reader";
 import Footer from "@/components/ui/footer";
 import Link from "next/link";
+import axios from "axios";
 
-const BackgroundBeamsDemo: React.FC = () => {
+interface content{
+  _id : string,
+  description: string,
+  designation: string,
+  __v: number
+}
+
+const Roles: React.FC = () => {
+  const [data, setData] = useState<content[]>([]);
+
+  useEffect(()=>{
+    const fetchData = async ()=>{
+      try {
+        const response = await axios.get("/api/Role/get");
+        setData(response.data);
+      } catch (error) {
+        console.log("-----------------Error in fetchin roles---------------------------")
+      }
+    }
+
+    fetchData();
+  },[])
+
   return (
     <div className="flex flex-col items-center">
       <CustomNavbar />
@@ -21,9 +44,9 @@ const BackgroundBeamsDemo: React.FC = () => {
         </span>
       </div>
       {/* <div className="h-[5vh]"></div> */}
-      <RolesReader items={content} />
+      <RolesReader items={data} />
 
-      <div className="h-[5vh]"></div>
+      {/* <div className="h-[vh]"></div> */}
 
       <Link href={"/form"}
       className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] flex items-center justify-center rounded-full text-xl md:text-2xl font-bold"
@@ -39,19 +62,4 @@ const BackgroundBeamsDemo: React.FC = () => {
   );
 };
 
-const content = [
-  {
-    designation: "Teacher",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni earum illo dolorem, corrupti pariatur molestias fugit. Sit recusandae consequuntur tempora",
-  },
-  {
-    designation: "Website Handler",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni earum illo dolorem, corrupti pariatur molestias fugit. Sit recusandae consequuntur tempora",
-  },
-  {
-    designation: "Distributer",
-    description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni earum illo dolorem, corrupti pariatur molestias fugit. Sit recusandae consequuntur tempora",
-  },
-];
-
-export default BackgroundBeamsDemo;
+export default Roles;
