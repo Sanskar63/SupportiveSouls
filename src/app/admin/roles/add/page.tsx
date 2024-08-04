@@ -7,6 +7,7 @@ import CustomNavbar from "@/components/ui/custom-navbar";
 import Footer from "@/components/ui/footer";
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import AdminNav from "@/components/ui/custom-navbar Admin";
 
 export default function SignupFormDemo() {
     const [designation, setDesignation] = useState<string>("");
@@ -35,7 +36,7 @@ export default function SignupFormDemo() {
 
     return (
         <div className="w-[100%]">
-            <CustomNavbar />
+            <AdminNav />
 
             <div className="h-[20vh]"></div>
 

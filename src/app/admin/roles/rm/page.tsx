@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import Footer from "@/components/ui/footer";
 import axios from "axios";
+import AdminNav from "@/components/ui/custom-navbar Admin";
 
 interface content {
     _id: string,
@@ -42,7 +43,7 @@ const Roles: React.FC = () => {
     }
     return (
         <div className="flex flex-col items-center">
-            <CustomNavbar />
+            <AdminNav />
 
             <div className="h-[65vh] w-[100%] flex flex-col justify-end items-center bg-purple-light pb-[5vh]">
                 <span className="text-3xl md:text-4xl lg:text-5xl text-black font-semibold w-[50%] lg:w-[35%] text-center">

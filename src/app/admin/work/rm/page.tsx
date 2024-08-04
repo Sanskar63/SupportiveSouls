@@ -1,6 +1,7 @@
 "use client"
 import Carousel from '@/components/ui/carousel'; // Ensure correct import path
 import CustomNavbar from '@/components/ui/custom-navbar';
+import AdminNav from '@/components/ui/custom-navbar Admin';
 import Footer from '@/components/ui/footer';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -49,7 +50,7 @@ function Work() {
 
     return (
         <div className='w-[100%] flex flex-col items-center'>
-            <CustomNavbar />
+            <AdminNav />
             <div className='h-[30vh]'></div>
 
             {
