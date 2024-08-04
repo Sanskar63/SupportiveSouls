@@ -47,7 +47,7 @@ function PaymentPage() {
                 name: 'SupportiveSouls',
                 description: 'Test Transaction',
                 order_id: data.id,
-                callback_url: "http://localhost:3000/api/payments/verification",
+                callback_url: "/api/payments/verification",
                 prefill: {
                     name: donorName,
                     email: donorEmail,
