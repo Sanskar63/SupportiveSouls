@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         }
 
         //payment is verified-----sAVE THE details 
-        return NextResponse.redirect("http://localhost:3000/");
+        return NextResponse.redirect(new URL('/', req.nextUrl));
     } catch (error) {
         console.error('Error verifying payment:', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
