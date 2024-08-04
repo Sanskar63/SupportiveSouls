@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const InfiniteUpcoming = ({
@@ -31,7 +32,7 @@ export const InfiniteUpcoming = ({
 
   useEffect(() => {
     addAnimation();
-  }, []);
+  }, [addAnimation]);
 
   const [start, setStart] = useState(false);
   function addAnimation() {
@@ -100,7 +101,7 @@ export const InfiniteUpcoming = ({
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
               <div className="bg-gray-400 rounded-lg w-[98%] h-40 mb-6 mx-auto">
-                <img src={item.banner[0].url} alt="" />
+                <Image src={item.banner[0].url} alt="" />
               </div>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">

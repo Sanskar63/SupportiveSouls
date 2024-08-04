@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
@@ -36,9 +37,9 @@ const Carousel: React.FC<ContentReaderProps> = ({ data }) => {
       <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-4 filter drop-shadow-[0px_0px_5px_#555] w-8 h-8 text-white hover:cursor-pointer" />
       {data.images.map((item, idx) => {
         return (
-          <img
+          <Image
             src={item.url}
-            // alt={item.alt}
+            alt={""}
             key={idx}
             className={`${slide === idx ? 'block' : 'hidden'} rounded-lg shadow-md w-full h-full`}
           />

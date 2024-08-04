@@ -3,6 +3,7 @@ import Carousel from '@/components/ui/carousel'; // Ensure correct import path
 import CustomNavbar from '@/components/ui/custom-navbar';
 import Footer from '@/components/ui/footer';
 import axios from 'axios';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface ImageItem {
@@ -57,7 +58,7 @@ function Work() {
                 content.map((item) => (
                     <div key={item._id} className='flex justify-center items-center bg-purple-light w-[65%] h-[50vh] my-[3vh] rounded-2xl relative'>
                         <div className='bg-slate-600 w-[45%] h-[85%] rounded-2xl mr-[5%] flex justify-center items-center'>
-                            <img src={item.banner[0].url} alt="" />
+                            <Image src={item.banner[0].url} alt="" />
                         </div>
 
                         <div className='w-[45%] h-[70%] rounded-2xl flex flex-col items-center'>
