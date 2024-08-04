@@ -6,8 +6,8 @@ import Footer from "@/components/ui/footer";
 import Link from "next/link";
 import axios from "axios";
 
-interface content{
-  _id : string,
+interface content {
+  _id: string,
   description: string,
   designation: string,
   __v: number
@@ -15,19 +15,21 @@ interface content{
 
 const Roles: React.FC = () => {
   const [data, setData] = useState<content[]>([]);
+  const [isAvail, setAvail] = useState<boolean>(false);
 
-  useEffect(()=>{
-    const fetchData = async ()=>{
+  useEffect(() => {
+    const fetchData = async () => {
       try {
         const response = await axios.get("/api/Role/get");
         setData(response.data);
+        if (response.data.length !== 0) setAvail(true);
       } catch (error) {
         console.log("-----------------Error in fetchin roles---------------------------")
       }
     }
 
     fetchData();
-  },[])
+  }, [])
 
   return (
     <div className="flex flex-col items-center">
@@ -42,16 +44,29 @@ const Roles: React.FC = () => {
           Roles Available
         </span>
       </div>
-      {/* <div className="h-[5vh]"></div> */}
-      <RolesReader items={data} />
+      <div className="h-[5vh]"></div>
+      {
+        isAvail ? (
+          <RolesReader items={data} />
+        ) :
+          (
+            <p className="text-xl md:text-2xl lg:text-3xl text-black font-semibold w-[50%] lg:w-[35%] text-center">No Roles Available</p>
+          )
+      }
 
-      {/* <div className="h-[vh]"></div> */}
+      {/* <div className="h-[2vh]"></div> */}
 
-      <Link href={"/form"}
-      className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] flex items-center justify-center rounded-full text-xl md:text-2xl font-bold"
-      >
-        Join Us
-      </Link>
+      {isAvail ?
+        (
+          <Link href={"/form"}
+            className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] flex items-center justify-center rounded-full text-xl md:text-2xl font-bold"
+          >
+            Join Us
+          </Link>
+        ) : (
+          <div></div>
+        )}
+
 
       <div className="h-[10vh]"></div>
 
