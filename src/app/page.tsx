@@ -1,13 +1,43 @@
 'use client';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import Hero from "@/components/ui/hero-section";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import Footer from "@/components/ui/footer";
 import Link from "next/link";
+import { InfiniteUpcoming } from "@/components/ui/infinite-Upcoming_Events";
+import axios from "axios";
 
+interface content {
+    _id: string;
+    description: string;
+    heading: string;
+    date: string;
+    banner: {
+      url: string;
+      public_id: string;
+      _id: string;
+    }[]
+  };
 export default function NavbarDemo() {
+  const [Upcoming, setUpcoming] = useState<content[]>([]);
+
+  useEffect(()=>{
+    FetchEvents();
+  },[]);
+
+
+  const FetchEvents = async()=>{
+    try {
+      const res = await axios.get("/api/Events/get");
+      setUpcoming(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.log("Error---------------------------", error)
+    }
+  }
+
   return (
     <div className="relative w-full flex flex-col justify-center items-center">
 
@@ -16,6 +46,7 @@ export default function NavbarDemo() {
       <Hero />
 
       <div className="h-[7vh]"></div>
+      {/*Here Goes quotes from founders  */}
       <InfiniteMovingCards items={testimonials} direction="left" speed="slow" />
       <div className="h-[7vh]"></div>
 
@@ -29,7 +60,7 @@ export default function NavbarDemo() {
       <span className="sm:text-2xl lg:text-5xl text-black font-semibold text-center">Upcoming Events</span>
       <div className="h-[3vh]"></div>
 
-      <InfiniteMovingCards items={testimonials} direction="left" speed="slow" />
+      <InfiniteMovingCards items={testimonials} direction="left" speed="fast" />
 
       <div className="h-[7vh]"></div>
 
@@ -56,6 +87,44 @@ export default function NavbarDemo() {
     </div>
   );
 }
+
+
+
+
+// const Upcoming = [
+//   {
+//     "_id": "669e2321a1be76ad23bac61e",
+//     "banner": [
+//         {
+//             "url": "https://res.cloudinary.com/dt3o6uwwn/image/upload/v1721639713/pixyv7bikylshowzu9fo.jpg",
+//             "public_id": "pixyv7bikylshowzu9fo",
+//             "_id": "669e2321a1be76ad23bac61f"
+//         }
+//     ],
+//     "description": "Donation of water cooler to near orphanage.",
+//     "date": "2024-07-29T00:00:00.000Z",
+//     "heading": "Water Cooler Donation",
+//     "createdAt": "2024-07-22T09:15:13.519Z",
+//     "updatedAt": "2024-07-22T09:15:13.519Z",
+//     "__v": 0
+//   },
+//   {
+//     "_id": "669e2321a1be76ad23bac61e",
+//     "banner": [
+//         {
+//             "url": "https://res.cloudinary.com/dt3o6uwwn/image/upload/v1721639713/pixyv7bikylshowzu9fo.jpg",
+//             "public_id": "pixyv7bikylshowzu9fo",
+//             "_id": "669e2321a1be76ad23bac61f"
+//         }
+//     ],
+//     "description": "Donation of water cooler to near orphanage.",
+//     "date": "2024-07-29T00:00:00.000Z",
+//     "heading": "Water Cooler Donation",
+//     "createdAt": "2024-07-22T09:15:13.519Z",
+//     "updatedAt": "2024-07-22T09:15:13.519Z",
+//     "__v": 0
+//   }
+// ]
 
 const testimonials = [
   {
