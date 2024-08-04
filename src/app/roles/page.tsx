@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import RolesReader from "@/components/ui/role-reader";
 import Footer from "@/components/ui/footer";

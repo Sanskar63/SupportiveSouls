@@ -47,10 +47,7 @@ function PaymentPage() {
                 name: 'SupportiveSouls',
                 description: 'Test Transaction',
                 order_id: data.id,
-                handler: (response: any) => {
-                    console.log('Payment response:', response);
-                    // Handle successful payment here (e.g., save transaction details)
-                },
+                callback_url: "http://localhost:3000/api/payments/verification",
                 prefill: {
                     name: donorName,
                     email: donorEmail,
@@ -60,7 +57,7 @@ function PaymentPage() {
                     address: 'SupportiveSouls Corporate Office',
                 },
                 theme: {
-                    color: '#3399cc',
+                    color: '#7F50A4',
                 },
             };
 

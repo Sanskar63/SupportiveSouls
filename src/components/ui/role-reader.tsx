@@ -16,7 +16,7 @@ const RolesReader: React.FC<RolesReaderProps> = ({ items }) => {
       {items.map((item, index) => (
         <div key={index} className="text-black my-[5%]  border-black border-2 rounded-2xl p-4">
           <h3 className="md:text-3xl font-bold mb-2">{item.designation}</h3>
-          <p className="text-sm md:text-xl font-thin">{item.description}</p>
+          <p className="text-sm md:text-xl text-black font-extralight">{item.description}</p>
         </div>
       ))}
     </div>

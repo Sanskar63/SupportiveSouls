@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.nav-link {
+  white-space: nowrap;
+}
