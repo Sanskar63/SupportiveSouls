@@ -13,9 +13,9 @@ export async function POST(request: Request) {
         if(!result){
             return new Response("Couldn't delete", {status: 400});
         }
-        let public_id = result.banner[0].public_id;
+        // let public_id = result.banner[0].public_id;
         const deleted = await EventModel.deleteOne({_id:id});
-        public_id = await deleteFromCloudinary(public_id);
+        // public_id = await deleteFromCloudinary(public_id);
 
         console.log(deleted);
         return new Response("sucessfully deleted the events", {status:200});
