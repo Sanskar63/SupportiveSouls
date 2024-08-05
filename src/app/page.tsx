@@ -45,12 +45,12 @@ export default function NavbarDemo() {
       <CustomNavbar />
       <Hero />
 
-      <div className="h-[7vh]"></div>
+      <div className=" h-[4vh] lg:h-[7vh]"></div>
       {/*Here Goes quotes from founders  */}
       <InfiniteMovingCards items={Quotes} direction="left" speed="slow" />
-      <div className="h-[7vh]"></div>
+      <div className=" h-[4vh] lg:h-[7vh]"></div>
 
-      <span className="sm:text-2xl lg:text-5xl text-black font-semibold text-center">Moments</span>
+      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Moments</span>
       <div className="h-screen w-full bg-purple-light my-[2%]">
         <LayoutGrid cards={cards} />
       </div>
@@ -62,18 +62,18 @@ export default function NavbarDemo() {
 
       <InfiniteMovingCards items={testimonials} direction="left" speed="slow" /> */}
 
-      <div className="h-[7vh]"></div>
+      <div className=" h-[4vh] lg:h-[7vh]"></div>
 
-      <div className="h-[70vh] w-[100%] bg-purple-light flex flex-col justify-center items-center">
+      <div className=" h-[40vh] lg:h-[70vh] w-[100%] bg-purple-light flex flex-col justify-center items-center">
         <span className="text-xl md:text-3xl lg:text-5xl text-black font-semibold w-[50%] text-center">
           Contribute to make good change.
         </span>
 
         <div className="w-[100%] flex items-center justify-center mt-[2vh]">
-          <Link href={"/donate"} className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
+          <Link href={"/donate"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] lg:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Donate
           </Link>
-          <Link href={"/roles"} className="bg-purple-mid w-[10vw] m-[1%] h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
+          <Link href={"/roles"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] lg:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Join Us
           </Link>
         </div>
@@ -81,7 +81,7 @@ export default function NavbarDemo() {
       </div>
 
 
-      <div className="h-[10vh]"></div>
+      <div className=" h-[5vh] lg:h-[10vh]"></div>
 
       <Footer />
     </div>

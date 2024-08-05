@@ -1,12 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import CustomNavbar from "@/components/ui/custom-navbar";
 import Footer from "@/components/ui/footer";
-import axios from 'axios'
-import toast from 'react-hot-toast'
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
 export default function SignupFormDemo() {
@@ -18,7 +19,8 @@ export default function SignupFormDemo() {
   const [about, setAbout] = useState<string>("");
   const [aadhar, setAadhar] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-
+  
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
@@ -42,23 +44,25 @@ export default function SignupFormDemo() {
       });
 
       console.log(res);
-
-      toast.success("Applied")
+      alert("Applied Successfully");
+      toast.success("Applied");
+      router.push("/");
 
       setLoading(false);
     } catch (error) {
-      setLoading(false)
-      toast.error("Could't Apply")
+      setLoading(false);
+      toast.error("Could't Apply");
       console.error("Error submitting the form:", error);
     }
   };
+
   return (
     <div className="w-[100%]">
       <CustomNavbar />
 
       <div className="h-[20vh]"></div>
 
-      <div className=" w-[90vw] md:w-[60vw] lg:w-[40vw] mx-auto rounded-xl md:rounded-2xl p-4 md:p-8 shadow-input bg-purple-light">
+      <div className="w-[90vw] md:w-[60vw] lg:w-[40vw] mx-auto rounded-xl md:rounded-2xl p-4 md:p-8 shadow-input bg-purple-light">
         <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
           Welcome to SupportiveSouls
         </h2>
@@ -67,52 +71,44 @@ export default function SignupFormDemo() {
         </p>
 
         <form className="my-8" onSubmit={handleSubmit}>
-
-
           <LabelInputContainer className="mb-4">
             <Label htmlFor="Name">Name</Label>
-            <Input id="Name" placeholder="Name" type="text" onChange={(e) => (setName(e.target.value))} />
+            <Input id="Name" placeholder="Name" type="text" onChange={(e) => setName(e.target.value)} />
           </LabelInputContainer>
 
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-            <LabelInputContainer className="">
+            <LabelInputContainer>
               <Label htmlFor="contact">Contact</Label>
-              <Input id="contact" placeholder="9987654321" type="text" onChange={(e) => (setContact(e.target.value))} />
+              <Input id="contact" placeholder="9987654321" type="text" onChange={(e) => setContact(e.target.value)} />
             </LabelInputContainer>
 
-            <LabelInputContainer className="">
+            <LabelInputContainer>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" placeholder="abcd@gmail.com" type="email" onChange={(e) => (setEmail(e.target.value))} />
+              <Input id="email" placeholder="abcd@gmail.com" type="email" onChange={(e) => setEmail(e.target.value)} />
             </LabelInputContainer>
           </div>
 
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
-            <LabelInputContainer >
+            <LabelInputContainer>
               <Label htmlFor="role">Role</Label>
-              <Input id="role" placeholder="Teacher" type="text" onChange={(e) => (setRole(e.target.value))} />
+              <Input id="role" placeholder="Teacher" type="text" onChange={(e) => setRole(e.target.value)} />
             </LabelInputContainer>
 
-            <LabelInputContainer >
+            <LabelInputContainer>
               <Label htmlFor="hours">Hours per week</Label>
-              <Input
-                id="hours"
-                placeholder="3"
-                type="text"
-                onChange={(e) => (setHours(e.target.value))}
-              />
+              <Input id="hours" placeholder="3" type="text" onChange={(e) => setHours(e.target.value)} />
             </LabelInputContainer>
           </div>
 
           <LabelInputContainer className="mb-4">
             <Label htmlFor="aadhar">Aadhar Number</Label>
-            <Input id="aadhar" placeholder="000000000000" type="text" onChange={(e) => (setAadhar(e.target.value))} />
+            <Input id="aadhar" placeholder="000000000000" type="text" onChange={(e) => setAadhar(e.target.value)} />
           </LabelInputContainer>
 
           <LabelInputContainer className="mb-8">
             <Label htmlFor="about">About</Label>
-            <Input id="about" placeholder="optional" type="text" onChange={(e) => (setAbout(e.target.value))} />
+            <Input id="about" placeholder="optional" type="text" onChange={(e) => setAbout(e.target.value)} />
           </LabelInputContainer>
-
 
           {loading ? (
             <button
@@ -133,16 +129,11 @@ export default function SignupFormDemo() {
             </button>
           )}
 
-
-
           <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-
-
         </form>
       </div>
 
       <div className="h-[10vh]"></div>
-
 
       <Footer />
     </div>

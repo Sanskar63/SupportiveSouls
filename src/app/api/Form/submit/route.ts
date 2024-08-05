@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     // console.log(data)
     // return new Response(data);
     
-    if (!name || !email || !contact || !role || !hours || !about || !aadhar) {
+    if (!name || !email || !contact || !role || !hours || !aadhar) {
       console.log("----------All data needed-------------")
       return new Response("All feilds are required", { status: 400 });
     }

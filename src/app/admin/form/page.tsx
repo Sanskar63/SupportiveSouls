@@ -61,26 +61,26 @@ function Form() {
 
             { isAvail? (
                 content.map((item) => (
-                    <div key={item._id} className='flex justify-center items-center bg-purple-light w-[65%] h-[50vh] my-[3vh] rounded-2xl relative'>
-                        <div className='w-[45%] h-[70%] rounded-2xl flex flex-col items-center'>
+                    <div key={item._id} className='flex justify-center items-center bg-purple-light w-[80%] lg:w-[65%] h-[35vh] lg:h-[50vh] my-[3vh] rounded-2xl relative'>
+                        <div className=' w-[80%] h-[70%] rounded-2xl flex flex-col items-center'>
                             <span className="text-sm md:text-xl lg:text-3xl text-black font-semibold underline">
                                 {item.name}
                             </span>
                             <div className='h-[5%]'></div>
-                            <span className="text-sm md:text-xl text-black text-center">{item.role}</span>
-                            <span className='text-black text-xl'>Contact: {item.contact}</span>
-                            <span className='text-black text-xl'>Email: {item.email}</span>
-                            <span className='text-black text-xl'>Role: {item.role}</span>
-                            <span className='text-black text-xl'>Aadhar Number: {item.aadhar}</span>
-                            <span className='text-black text-xl'>Hours: {item.hours}</span>
-                            <span className='text-black text-xl'>About: {item.about}</span>
+                            {/* <span className="text-sm md:text-xl text-black text-center">{item.role}</span> */}
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>Contact: {item.contact}</span>
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>Email: {item.email}</span>
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>Role: {item.role}</span>
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>Aadhar Number: {item.aadhar}</span>
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>Hours: {item.hours}</span>
+                            <span className='text-gray-800 text-xs md:text-sm lg:text-xl'>About: {item.about}</span>
                         </div>
 
                         {loading ? (
-                            <button className='h-11 p-3 flex items-center justify-center bg-gray-800 absolute top-0 right-0 rounded-full cursor-wait' onClick={() => { removeWork(item._id) }} disabled> remove </button>
+                            <button className='h-9 lg:h-11 p-3 flex items-center justify-center bg-gray-800 absolute -top-2 -right-2 rounded-full cursor-wait' onClick={() => { removeWork(item._id) }} disabled> remove </button>
                         ) :
                             (
-                                <button className='h-11 p-3 flex items-center justify-center bg-black absolute top-0 right-0 rounded-full cursor-pointer' onClick={() => { removeWork(item._id) }}> remove </button>
+                                <button className='h-9 lg:h-11 p-3 flex items-center justify-center bg-black absolute -top-2 -right-2 rounded-full cursor-pointer' onClick={() => { removeWork(item._id) }}> remove </button>
                             )
                         }
 
