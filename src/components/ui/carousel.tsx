@@ -3,22 +3,21 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
-
 interface ImageItem {
   url: string;
   alt?: string; // Optional alt text for the image
 }
 
 interface Items {
-    _id: string;
-    description: string;
-    images: ImageItem[];
-    heading: string;
-    __v?: number;
+  _id: string;
+  description: string;
+  images: ImageItem[];
+  heading: string;
+  __v?: number;
 }
 
 interface ContentReaderProps {
-    data: Items
+  data: Items;
 }
 
 const Carousel: React.FC<ContentReaderProps> = ({ data }) => {
@@ -33,16 +32,20 @@ const Carousel: React.FC<ContentReaderProps> = ({ data }) => {
   };
 
   return (
-    <div className="relative flex justify-center items-center w-[100%] h-[100%]">
+    <div className="relative flex justify-center items-center w-[100%] h-[100%] overflow-hidden">
       <BsArrowLeftCircleFill onClick={prevSlide} className="absolute left-4 filter drop-shadow-[0px_0px_5px_#555] w-8 h-8 text-white hover:cursor-pointer" />
       {data.images.map((item, idx) => {
         return (
-          <Image
-            src={item.url}
-            alt={""}
-            key={idx}
-            className={`${slide === idx ? 'block' : 'hidden'} rounded-lg shadow-md w-full h-full`}
-          />
+          <div key={idx} className={`${slide === idx ? 'block' : 'hidden'} w-full h-full flex justify-center items-center rounded-lg`}>
+            <Image
+              src={item.url}
+              alt={item.alt || ""}
+              layout="responsive"
+              width={800} // Set a default width
+              height={600} // Set a default height
+              className="shadow-md object-cover w-full h-full"
+            />
+          </div>
         );
       })}
       <BsArrowRightCircleFill onClick={nextSlide} className="absolute right-4 filter drop-shadow-[0px_0px_5px_#555] w-8 h-8 text-white hover:cursor-pointer" />
@@ -61,4 +64,4 @@ const Carousel: React.FC<ContentReaderProps> = ({ data }) => {
   );
 };
 
-export default Carousel ;
+export default Carousel;
