@@ -107,7 +107,7 @@ export default function NavbarDemo() {
 
           <div className="flex flex-col items-center justify-center w-[28%]">
             <span className="text-2xl lg:text-8xl text-black font-semibold text-center">10+</span>
-            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Animals have been rescued and been given proper treatment.</span>
+            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Animals have been rescued and treated.</span>
           </div>
 
 
@@ -129,10 +129,10 @@ export default function NavbarDemo() {
         </span>
 
         <div className="w-[100%] flex items-center justify-center mt-[2vh]">
-          <Link href={"/donate"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] lg:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
+          <Link href={"/donate"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] md:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Donate
           </Link>
-          <Link href={"/roles"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] lg:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
+          <Link href={"/roles"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] md:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
             Join Us
           </Link>
         </div>

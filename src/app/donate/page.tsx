@@ -71,13 +71,13 @@ function PaymentPage() {
     };
 
     return (
-        <div className='flex flex-col w-screen items-center justify-center'>
+        <div className='flex flex-col w-[100%] items-center justify-center'>
             <CustomNavbar />
 
-            <div className='h-[20vh]'></div>
+            <div className='h-[15vh]'></div>
 
-            <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-purple-light dark:bg-black">
-                <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+            <div className=" w-[90%] md:w-[60%] mx-auto rounded-2xl p-8 lg:p-4 md:p-8 shadow-input bg-purple-light dark:bg-purple-mid">
+                <h2 className="font-bold text-xl md:text-2xl text-neutral-800 dark:text-neutral-200">
                     Welcome to SupportiveSouls
                 </h2>
                 <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">

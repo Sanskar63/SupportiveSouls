@@ -35,12 +35,12 @@ const Roles: React.FC = () => {
     <div className="flex flex-col items-center">
       <CustomNavbar />
 
-      <div className="h-[65vh] w-[100%] flex flex-col justify-end items-center bg-purple-light pb-[5vh]">
-        <span className="text-3xl md:text-4xl lg:text-5xl text-black font-semibold w-[50%] lg:w-[35%] text-center">
+      <div className=" h-[50vh] lg:h-[65vh] w-[100%] flex flex-col justify-end items-center bg-purple-light pb-[5vh]">
+        <span className="text-3xl md:text-4xl lg:text-5xl text-black font-semibold w-[80%] lg:w-[35%] text-center">
           Volunteer to make a change.
         </span>
         <div className="h-[10vh]"></div>
-        <span className="text-sm md:text-xl lg:text-3xl text-black font-semibold w-[70%] underline">
+        <span className="text-xl md:text-2xl lg:text-3xl text-black font-semibold w-[70%] underline underline-offset-4">
           Roles Available
         </span>
       </div>
@@ -59,7 +59,7 @@ const Roles: React.FC = () => {
       {isAvail ?
         (
           <Link href={"/form"}
-            className="bg-purple-mid w-[12vw] m-[1%] h-[8vh] flex items-center justify-center rounded-full text-xl md:text-2xl font-bold"
+            className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] md:h-[8vh]  flex items-center justify-center rounded-full text-sm md:text-2xl font-bold"
           >
             Join Us
           </Link>
