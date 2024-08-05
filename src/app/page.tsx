@@ -8,27 +8,28 @@ import Footer from "@/components/ui/footer";
 import Link from "next/link";
 import { InfiniteUpcoming } from "@/components/ui/infinite-Upcoming_Events";
 import axios from "axios";
+import Image from "next/image";
 
 interface content {
+  _id: string;
+  description: string;
+  heading: string;
+  date: string;
+  banner: {
+    url: string;
+    public_id: string;
     _id: string;
-    description: string;
-    heading: string;
-    date: string;
-    banner: {
-      url: string;
-      public_id: string;
-      _id: string;
-    }[]
-  };
+  }[]
+};
 export default function NavbarDemo() {
   const [Upcoming, setUpcoming] = useState<content[]>([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     FetchEvents();
-  },[]);
+  }, []);
 
 
-  const FetchEvents = async()=>{
+  const FetchEvents = async () => {
     try {
       const res = await axios.get("/api/Events/get");
       setUpcoming(res.data);
@@ -54,7 +55,65 @@ export default function NavbarDemo() {
       <div className="h-screen w-full bg-purple-light my-[2%]">
         <LayoutGrid cards={cards} />
       </div>
-{/* 
+
+      <div className=" h-[4vh] lg:h-[7vh]"></div>
+
+      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Our Goals</span>
+      <div className=" w-full bg-purple-light my-[2%] px-[5%] flex flex-wrap items-center justify-center">
+
+        <div className="flex my-[2vw]">
+
+          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
+            <Image alt="Healthcare" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/healthcare.png"} />
+            <span className="text-sm lg:text-xl text-black font-semibold text-center">Health</span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
+            <Image alt="Education" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/homework.png"} />
+            <span className="text-sm lg:text-xl text-black font-semibold text-center">Education</span>
+          </div>
+        </div>
+
+        <div className="flex my-[2vw]">
+
+
+          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
+            <Image alt="Plant" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/plant.png"} />
+            <span className="text-sm lg:text-xl text-black font-semibold text-center">Environment</span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
+            <Image alt="Pets" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/pets.png"} />
+            <span className="text-sm lg:text-xl text-black font-semibold text-center">Animal</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div className=" h-[4vh] lg:h-[7vh]"></div>
+
+      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Our Impact</span>
+      <div className=" py-[4vw] w-full bg-purple-light my-[2%] px-[5%] flex flex-wrap items-start justify-center">
+
+          <div className="flex flex-col items-center justify-center w-[28%]">
+            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">40+</span>
+            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Students are benifiting from offline classes. </span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center  w-[28%]">
+            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">100+</span>
+            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Plants have been planted. </span>
+          </div>
+
+          <div className="flex flex-col items-center justify-center w-[28%]">
+            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">10+</span>
+            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Animals have been rescued and been given proper treatment.</span>
+          </div>
+
+
+      </div>
+
+      {/* 
       <div className="h-[5vh]"></div>
 
       <span className="sm:text-2xl lg:text-5xl text-black font-semibold text-center">Upcoming Events</span>
@@ -129,13 +188,13 @@ export default function NavbarDemo() {
 const Quotes = [
   {
     quote:
-      "Baklol.",
+      "If you want to devote for a good cause, don't wait for others to start first.",
     name: "Sanskriti Gupta",
     title: "Founder",
   },
   {
     quote:
-      "To be, or not to be, that is the question: Whether 'tis nobler in the mind to suffer The slings and arrows of outrageous fortune, Or to take Arms against a Sea of troubles, And by opposing end them: to die, to sleep.",
+      "Don't hesitate to do the right thing.",
     name: "Rohan Mishra",
     title: "Co-Founder",
   },
@@ -154,7 +213,7 @@ const Quotes = [
     name: "Daisy Chauhan",
     title: "Core Member",
   },
-  
+
 ];
 
 const SkeletonOne = () => {
@@ -163,7 +222,7 @@ const SkeletonOne = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Cooler Donation</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-      Due to the recent heat waves the temperature has risen above 45 deg Celsius. The heat has become unbearable. Thus SupportiveSouls Society has donated 2 big sized coolers to Cawnpore Hindu Orphanage.
+        Due to the recent heat waves the temperature has risen above 45 deg Celsius. The heat has become unbearable. Thus SupportiveSouls Society has donated 2 big sized coolers to Cawnpore Hindu Orphanage.
       </p>
     </div>
   );
@@ -175,7 +234,7 @@ const SkeletonTwo = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Book Donation</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-      Our NGO recently organized a book donation drive, providing essential educational resources to students in need. This initiative aims to promote literacy and support academic success, thanks to the generous contributions of our donors and volunteers.
+        Our NGO recently organized a book donation drive, providing essential educational resources to students in need. This initiative aims to promote literacy and support academic success, thanks to the generous contributions of our donors and volunteers.
       </p>
     </div>
   );
@@ -187,7 +246,7 @@ const SkeletonThree = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Planting and Ploughing</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-      Our NGO recently conducted a plantation and ploughing initiative, focusing on environmental sustainability and agricultural support. By planting trees and preparing land for cultivation, we aim to enhance ecological balance and support local farmers in their agricultural efforts.
+        Our NGO recently conducted a plantation and ploughing initiative, focusing on environmental sustainability and agricultural support. By planting trees and preparing land for cultivation, we aim to enhance ecological balance and support local farmers in their agricultural efforts.
       </p>
     </div>
   );
@@ -199,7 +258,7 @@ const SkeletonFour = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Teaching</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-      SupportiveSouls society provides regular educational sessions for students, aiming to enhance their knowledge and skills. Our dedicated team ensures consistent learning opportunities, fostering academic growth and personal development in a supportive environment.
+        SupportiveSouls society provides regular educational sessions for students, aiming to enhance their knowledge and skills. Our dedicated team ensures consistent learning opportunities, fostering academic growth and personal development in a supportive environment.
       </p>
     </div>
   );
@@ -210,7 +269,7 @@ const cards = [
     id: 1,
     content: <SkeletonOne />,
     className: "md:col-span-2",
-    thumbnail:"/cooler.jpeg",
+    thumbnail: "/cooler.jpeg",
   },
   {
     id: 2,
