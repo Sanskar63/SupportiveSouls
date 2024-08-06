@@ -45,7 +45,7 @@ export default function SignupFormDemo() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      toast.error("Could't Submit");
+      alert("couldn't add work")
       console.error("Error submitting the form:", error);
     }
   };
