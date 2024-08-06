@@ -1,7 +1,6 @@
 import WorkModel from "@/model/Work";
 import dbConnect from "@/lib/dbConnect";
 import { WorkSchema } from "@/Schemas/workSchema";
-import { writeFile } from "fs/promises";
 import { uploadOnCloudinary } from "@/lib/upload"; 
 import { NextResponse } from 'next/server';
 
@@ -19,25 +18,20 @@ export async function POST(request: Request) {
             return NextResponse.json({ message: "Heading and Description can't be empty." }, { status: 400 });
         }
 
-        const files = data.getAll('images');
+        const files = data.getAll('images') as File[];
         if (files.length === 0) {
             console.log("Validation failed: No images provided");
             return NextResponse.json({ message: "No images provided" }, { status: 400 });
         }
 
-        const imageUrls = [];
+        const imageUrls: { url: string; public_id: string }[] = [];
         for (const file of files) {
-            const byteData = await (file as File).arrayBuffer();
-            const buffer = Buffer.from(byteData);
-            const path = `./public/${(file as File).name}`;
-            await writeFile(path, buffer);
-
-            const response = await uploadOnCloudinary(path);
+            const response = await uploadOnCloudinary(file);
             if (response) {
                 console.log("Upload successful:", response);
                 imageUrls.push({ url: response.secure_url, public_id: response.public_id });
             } else {
-                console.log("Upload failed for file:", path);
+                console.log("Upload failed for file:", file.name);
             }
         }
 
