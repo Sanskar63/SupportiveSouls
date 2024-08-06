@@ -9,7 +9,7 @@ export async function POST(request: Request) {
         const url = new URL(request.url);
         const id = url.searchParams.get('id');
 
-        const result = await WorkModel.findById(id);
+        const result = await WorkModel.findById({_id:id});
         if(!result){
             return new Response(`Couldn't find the item with id == ${id}`, {status: 400});
         }
