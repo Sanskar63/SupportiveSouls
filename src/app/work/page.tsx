@@ -45,8 +45,8 @@ function Work() {
             {
                 isAvail ? (
                     content.map((item) => (
-                        <div key={item._id} className='flex flex-col md:flex-row justify-center items-center bg-purple-light w-[90%] md:w-[65%] h-[75vh] md:h-[50vh] my-[3vh] rounded-2xl'>
-                            <div className='bg-purple-mid w-[80%] md:w-[45%] h-[50%] md:h-[85%] rounded-2xl my-[5%] md:my-[0%] md:mr-[5%]'>
+                        <div key={item._id} className='flex flex-col md:flex-row justify-center items-center bg-purple-light w-[90%] md:w-[65%] py-6 md:py-10 my-[3vh] rounded-2xl'>
+                            <div className='bg-purple-mid w-[80%] md:w-[45%] h-[50%] md:h-[85%] rounded-2xl my-[5%] md:my-[0%] md:mr-[5%] overflow-hidden'>
                                 <Carousel data={item} />
                             </div>
     

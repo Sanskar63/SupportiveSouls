@@ -76,30 +76,30 @@ function PaymentPage() {
 
             <div className='h-[15vh]'></div>
 
-            <div className=" w-[90%] md:w-[60%] mx-auto rounded-2xl p-8 lg:p-4 md:p-8 shadow-input bg-purple-light dark:bg-purple-mid">
+            <div className=" w-[90%] md:w-[60%] lg:w-[35%] mx-auto rounded-2xl py-6 px-4 lg:p-6 md:p-8 shadow-input bg-purple-light dark:bg-purple-mid flex flex-col gap-2 md:gap-4">
                 <h2 className="font-bold text-xl md:text-2xl text-neutral-800 dark:text-neutral-200">
                     Welcome to SupportiveSouls
                 </h2>
-                <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
+                <p className="text-neutral-600 text-sm max-w-sm dark:text-neutral-300">
                     Your contribution matters to a lot of lives out there. Every rupee donated will be used for good.
                 </p>
 
-                <form className="my-8" onSubmit={handlePayment}>
+                <form className="my-4 lg:my-8" onSubmit={handlePayment}>
 
-                    <LabelInputContainer className="mb-4">
+                    <LabelInputContainer className=" mb-2 md:mb-4">
                         <Label htmlFor="Name">Name</Label>
                         <Input id="Name" placeholder="Name" type="text" onChange={(e) => setName(e.target.value)} />
                     </LabelInputContainer>
 
-                    <LabelInputContainer className="mb-4">
+                    <LabelInputContainer className=" mb-2 md:mb-4">
                         <Label htmlFor="email">Email Address</Label>
                         <Input id="email" placeholder="abcd@gmail.com" type="email" onChange={(e) => setEmail(e.target.value)} />
                     </LabelInputContainer>
-                    <LabelInputContainer className="mb-4">
+                    <LabelInputContainer className=" mb-2 md:mb-4">
                         <Label htmlFor="contact">Contact</Label>
                         <Input id="contact" placeholder="9876543210" type="number" onChange={(e) => setContact(Number(e.target.value))} />
                     </LabelInputContainer>
-                    <LabelInputContainer className="mb-8">
+                    <LabelInputContainer className=" mb-6 md:mb-8">
                         <Label htmlFor="amount">Amount</Label>
                         <Input
                             id="amount"
@@ -127,7 +127,7 @@ function PaymentPage() {
                         </button>
                     )}
 
-                    <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
+                    <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-2 md:my-6 h-[1px] w-full" />
                 </form>
             </div>
 
