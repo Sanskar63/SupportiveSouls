@@ -192,12 +192,12 @@ const Quotes = [
     name: "Sanskriti Gupta",
     title: "Founder",
   },
-  {
-    quote:
-      "Don't hesitate to do the right thing.",
-    name: "Rohan Mishra",
-    title: "Co-Founder",
-  },
+  // {
+  //   quote:
+  //     "Don't hesitate to do the right thing.",
+  //   name: "",
+  //   title: "Co-Founder",
+  // },
   {
     quote: "All that we see or seem is but a dream within a dream.",
     name: "Simran Maurya",
