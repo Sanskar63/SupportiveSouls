@@ -147,7 +147,7 @@ function Work() {
                         className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed"
                         variants={itemVariants}
                     >
-                        Discover the impact we're making in communities through our various initiatives and projects.
+                        Discover the impact we&apos;re making in communities through our various initiatives and projects.
                     </motion.p>
                 </motion.div>
             </section>
@@ -237,7 +237,7 @@ function Work() {
                                     No Work Available
                                 </h2>
                                 <p className="text-lg text-neutral-600 mb-8">
-                                    We're currently updating our work portfolio. Check back soon for our latest projects and initiatives.
+                                    We&apos;re currently updating our work portfolio. Check back soon for our latest projects and initiatives.
                                 </p>
                                 <Button variant="primary">
                                     Get Involved
@@ -321,7 +321,7 @@ function Work() {
                                                 This project has made a significant impact on the local community, 
                                                 providing essential support and resources to those in need. 
                                                 Through collaborative efforts and dedicated volunteers, 
-                                                we've been able to create lasting positive change.
+                                                we&apos;ve been able to create lasting positive change.
                                             </p>
                                         </div>
 

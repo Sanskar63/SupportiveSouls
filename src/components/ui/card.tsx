@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends React.ComponentPropsWithoutRef<typeof motion.div> {
   variant?: "default" | "elevated" | "outlined" | "glass";
   children: React.ReactNode;
   hover?: boolean;

@@ -168,7 +168,7 @@ const Roles: React.FC = () => {
                     No Roles Available
                   </h3>
                   <p className="text-lg text-neutral-600 mb-8">
-                    We're currently updating our volunteer opportunities. Check back soon for new roles and positions.
+                    We&apos;re currently updating our volunteer opportunities. Check back soon for new roles and positions.
                   </p>
                   <Button variant="primary">
                     Contact Us
