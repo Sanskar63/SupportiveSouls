@@ -9,6 +9,11 @@ import Link from "next/link";
 import { InfiniteUpcoming } from "@/components/ui/infinite-Upcoming_Events";
 import axios from "axios";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Heart, BookOpen, Leaf, PawPrint, ArrowRight, Users, Target, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SectionDivider from "@/components/ui/section-divider";
 
 interface content {
   _id: string;
@@ -21,13 +26,13 @@ interface content {
     _id: string;
   }[]
 };
+
 export default function NavbarDemo() {
   const [Upcoming, setUpcoming] = useState<content[]>([]);
 
   useEffect(() => {
     FetchEvents();
   }, []);
-
 
   const FetchEvents = async () => {
     try {
@@ -39,108 +44,215 @@ export default function NavbarDemo() {
     }
   }
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const goals = [
+    { icon: Heart, title: "Health", description: "Promoting healthcare access and wellness" },
+    { icon: BookOpen, title: "Education", description: "Empowering through knowledge and learning" },
+    { icon: Leaf, title: "Environment", description: "Protecting and preserving our planet" },
+    { icon: PawPrint, title: "Animal", description: "Caring for our furry friends" }
+  ];
+
+  const impactStats = [
+    { number: "40+", label: "Students benefiting from offline classes", icon: Users },
+    { number: "100+", label: "Plants have been planted", icon: Leaf },
+    { number: "10+", label: "Animals have been rescued and treated", icon: PawPrint }
+  ];
+
   return (
     <div className="relative w-full flex flex-col justify-center items-center">
-
-
       <CustomNavbar />
       <Hero />
 
-      <div className=" h-[4vh] lg:h-[7vh]"></div>
-      {/*Here Goes quotes from founders  */}
-      <InfiniteMovingCards items={Quotes} direction="left" speed="slow" />
-      <div className=" h-[4vh] lg:h-[7vh]"></div>
+      {/* Quotes Section */}
+      <section className="w-full py-16 bg-gradient-to-br from-secondary-50 to-secondary-100">
+        <motion.div
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <InfiniteMovingCards items={Quotes} direction="left" speed="slow" />
+        </motion.div>
+      </section>
 
-      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Moments</span>
-      <div className="h-screen w-full bg-purple-light my-[2%]">
-        <LayoutGrid cards={cards} />
-      </div>
+      <SectionDivider variant="decorative" />
 
-      <div className=" h-[4vh] lg:h-[7vh]"></div>
+      {/* Moments Section */}
+      <section className="w-full py-20 bg-white">
+        <motion.div
+          className="container-custom"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-gradient"
+            variants={itemVariants}
+          >
+            Our Moments
+          </motion.h2>
+          <motion.div 
+            className="h-screen w-full"
+            variants={itemVariants}
+          >
+            <LayoutGrid cards={cards} />
+          </motion.div>
+        </motion.div>
+      </section>
 
-      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Our Goals</span>
-      <div className=" w-full bg-purple-light my-[2%] px-[5%] flex flex-wrap items-center justify-center">
+      <SectionDivider variant="gradient" />
 
-        <div className="flex my-[2vw]">
+      {/* Goals Section */}
+      <section className="w-full py-20 bg-gradient-to-br from-secondary-50 to-secondary-100">
+        <motion.div
+          className="container-custom"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-gradient"
+            variants={itemVariants}
+          >
+            Our Goals
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={itemVariants}
+          >
+            {goals.map((goal, index) => (
+              <motion.div
+                key={goal.title}
+                className="card card-hover p-8 text-center group"
+                whileHover={{ y: -10 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <goal.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-neutral-800">{goal.title}</h3>
+                <p className="text-neutral-600 leading-relaxed">{goal.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
 
-          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
-            <Image alt="Healthcare" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/healthcare.png"} />
-            <span className="text-sm lg:text-xl text-black font-semibold text-center">Health</span>
-          </div>
+      <SectionDivider variant="decorative" />
 
-          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
-            <Image alt="Education" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/homework.png"} />
-            <span className="text-sm lg:text-xl text-black font-semibold text-center">Education</span>
-          </div>
+      {/* Impact Section */}
+      <section className="w-full py-20 bg-white">
+        <motion.div
+          className="container-custom"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-gradient"
+            variants={itemVariants}
+          >
+            Our Impact
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={itemVariants}
+          >
+            {impactStats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                className="card card-hover p-8 text-center group"
+                whileHover={{ y: -10 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-mid mb-4">
+                  {stat.number}
+                </div>
+                <p className="text-neutral-600 leading-relaxed text-lg">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <SectionDivider variant="simple" />
+
+      {/* CTA Section */}
+      <section className="w-full py-20 bg-gradient-to-br from-purple-mid via-primary-600 to-primary-700 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="flex my-[2vw]">
-
-
-          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
-            <Image alt="Plant" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/plant.png"} />
-            <span className="text-sm lg:text-xl text-black font-semibold text-center">Environment</span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center mx-[8vw] md:m-[4vw]">
-            <Image alt="Pets" width={"800"} height={"600"} className=" w-14 md:w-20 lg:w-28" src={"/pets.png"} />
-            <span className="text-sm lg:text-xl text-black font-semibold text-center">Animal</span>
-          </div>
-        </div>
-
-      </div>
-
-      <div className=" h-[4vh] lg:h-[7vh]"></div>
-
-      <span className="text-2xl lg:text-5xl text-black font-semibold text-center">Our Impact</span>
-      <div className=" py-[4vw] w-full bg-purple-light my-[2%] px-[5%] flex flex-wrap items-start justify-center">
-
-          <div className="flex flex-col items-center justify-center w-[28%]">
-            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">40+</span>
-            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Students are benifiting from offline classes. </span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center  w-[28%]">
-            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">100+</span>
-            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Plants have been planted. </span>
-          </div>
-
-          <div className="flex flex-col items-center justify-center w-[28%]">
-            <span className="text-2xl lg:text-8xl text-black font-semibold text-center">10+</span>
-            <span className="text-xs lg:text-xl text-black font-light w-[20vw] text-center">Animals have been rescued and treated.</span>
-          </div>
-
-
-      </div>
-
-      {/* 
-      <div className="h-[5vh]"></div>
-
-      <span className="sm:text-2xl lg:text-5xl text-black font-semibold text-center">Upcoming Events</span>
-      <div className="h-[3vh]"></div>
-
-      <InfiniteMovingCards items={testimonials} direction="left" speed="slow" /> */}
-
-      <div className=" h-[4vh] lg:h-[7vh]"></div>
-
-      <div className=" h-[40vh] lg:h-[70vh] w-[100%] bg-purple-light flex flex-col justify-center items-center">
-        <span className="text-xl md:text-3xl lg:text-5xl text-black font-semibold w-[50%] text-center">
-          Contribute to make good change.
-        </span>
-
-        <div className="w-[100%] flex items-center justify-center mt-[2vh]">
-          <Link href={"/donate"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] md:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
-            Donate
-          </Link>
-          <Link href={"/roles"} className="bg-purple-mid w-[22vw] lg:w-[10vw] m-[1%] h-[5vh] md:h-[8vh] rounded-full text-sm md:text-xl flex items-center justify-center font-semibold">
-            Join Us
-          </Link>
-        </div>
-
-      </div>
-
-
-      <div className=" h-[5vh] lg:h-[10vh]"></div>
+        <motion.div
+          className="container-custom relative z-10"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="text-center max-w-4xl mx-auto"
+            variants={itemVariants}
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+              Contribute to make good change.
+            </h2>
+            <p className="text-xl text-white/90 mb-12 leading-relaxed">
+              Every action counts. Join us in creating a better world through compassion and community action.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button 
+                variant="accent" 
+                size="lg"
+                icon={<ArrowRight className="w-5 h-5" />}
+                asChild
+              >
+                <Link href="/donate">
+                  Donate Now
+                </Link>
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="lg"
+                icon={<Users className="w-5 h-5" />}
+                asChild
+              >
+                <Link href="/roles">
+                  Join Us
+                </Link>
+              </Button>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
 
       <Footer />
     </div>
